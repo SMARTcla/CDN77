@@ -1,0 +1,3 @@
+proxmox_server_ip: 147.10.1.100
+proxmox_user: admin
+proxmox_password: your_password

@@ -1,0 +1,4 @@
+---
+kafka_version: "2.6.0"
+scala_version: "2.13"
+broker_id: 1

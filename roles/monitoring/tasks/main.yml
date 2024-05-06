@@ -1,0 +1,27 @@
+---
+- name: Install Prometheus
+  apt:
+    name: prometheus
+    state: present
+
+- name: Install Grafana
+  apt:
+    name: grafana
+    state: present
+
+- name: Install Alertmanager
+  apt:
+    name: alertmanager
+    state: present
+
+- name: Configure Prometheus
+  template:
+    src: prometheus.yml.j2
+    dest: /etc/prometheus/prometheus.yml
+  notify: restart prometheus
+
+- name: Configure Alertmanager
+  copy:
+    src: alert_rules.yml
+    dest: /etc/alertmanager/alert_rules.yml
+  notify: restart alertmanager

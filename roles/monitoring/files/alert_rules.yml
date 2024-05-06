@@ -1,0 +1,11 @@
+groups:
+  - name: example_rules
+    rules:
+      - alert: HighLoad
+        expr: node_load1 > 1
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          description: 'High load detected on {{ $labels.instance }}'
+          summary: 'High load detected'

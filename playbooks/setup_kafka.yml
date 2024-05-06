@@ -1,0 +1,17 @@
+---
+- name: Setup Kafka
+  hosts: kafka
+  become: yes
+  tasks:
+    - name: Install Kafka
+      apt:
+        name: kafka
+        state: present
+        
+    notify: restart kafka
+
+  handlers:
+    - name: restart kafka
+      service:
+        name: kafka
+        state: restarted

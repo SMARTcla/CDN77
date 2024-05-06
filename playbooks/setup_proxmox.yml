@@ -1,0 +1,16 @@
+---
+- name: Setup Proxmox
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Proxmox
+      apt:
+        name: proxmox-ve
+        state: present
+      notify: restart proxmox
+
+  handlers:
+    - name: restart proxmox
+      service:
+        name: pveproxy
+        state: restarted

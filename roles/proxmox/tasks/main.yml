@@ -1,0 +1,16 @@
+---
+- name: Install Proxmox
+  apt:
+    name: proxmox-ve
+    state: present
+  notify: restart proxmox
+
+- name: Configure Proxmox
+  template:
+    src: proxmox.conf.j2
+    dest: /etc/proxmox/proxmox.conf
+
+- name: Start Proxmox service
+  service:
+    name: pveproxy
+    state: started
